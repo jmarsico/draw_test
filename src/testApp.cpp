@@ -44,7 +44,13 @@ void testApp::draw(){
     //triangle
     ofFill();
     ofSetColor(200, 30, 30, 100);    
-    ofTriangle(ofGetWindowWidth()*0.5, 10, 10, ofGetWindowHeight() - 10, ofGetWindowWidth() - 10, ofGetWindowHeight() - 10);
+    ofTriangle(ofGetWindowWidth()*0.5, 10, 10, ofGetWindowHeight() - 50, ofGetWindowWidth() - 50, ofGetWindowHeight() - 50);
+    
+    //box
+    ofNoFill();
+    ofSetColor(ofColor::ghostWhite);
+    ofBox(ofGetWindowWidth()*0.66,ofGetWindowHeight()*0.66,-10,40);
+    
     
     
     
