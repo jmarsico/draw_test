@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ball.h"
 
 class testApp : public ofBaseApp{
 	public:
@@ -18,10 +19,11 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    float xPos;
-    float yPos;
+ 
     float zPos;
     float coneRadius;
     float coneHeight;
     int z;
+    
+    Ball theBall;
 };
