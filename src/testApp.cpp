@@ -5,15 +5,48 @@ int conetop = 0;
 
 //--------------------------------------------------------------
 void testApp::setup(){
+   
+    //smoothing and alpha blending
     ofEnableSmoothing();
     ofEnableAlphaBlending();
     ofBackground(0);
-    ofBackgroundGradient(ofColor::black, ofColor::aquamarine, OF_GRADIENT_CIRCULAR);
+    
+    //set framerate
+    ofSetFrameRate(30);
+    
+    //initial position of the ball
+    xPos = ofGetWindowWidth() * 0.5;
+    yPos = ofGetWindowHeight() * 0.5;
 
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+    
+    xPos += ( mouseX - yPos )*0.1;
+    yPos += ( mouseY - yPos )*0.1;
+    
+    if( xPos > ofGetWindowWidth()){
+        xPos = ofGetWindowWidth();
+    }
+    
+    if( xPos < 0 ){
+        xPos = 0;
+    }
+    
+    if( yPos > ofGetWindowHeight()){
+        yPos = ofGetWindowHeight();
+    }
+    
+    if( yPos < 0 ){
+        yPos = 0;
+    }
+    
+ 
+    zPos++;
+    coneRadius++;
+    coneHeight++;
+   
 
 }
 
@@ -21,9 +54,10 @@ void testApp::update(){
 void testApp::draw(){
     
     //center circle
+    ofBackgroundGradient(ofColor::grey,ofColor(30,10,10), OF_GRADIENT_CIRCULAR);
     ofSetColor(0, 0, 255);
     ofFill();
-    ofCircle(ofGetWindowWidth()/2, ofGetWindowHeight()/2, 100);
+    ofCircle(xPos, yPos, 30);
     
     //curve
     ofNoFill();
@@ -33,13 +67,16 @@ void testApp::draw(){
 
     //outlined cone
 
+    
+    
     ofFill();
     ofSetColor(ofColor::coral);
-    ofCone(300, 600, 10, 60, 100);
+    ofCone(300, 600, zPos, coneRadius, coneHeight);
     ofNoFill();
     ofSetColor(ofColor::burlyWood);
-    ofCone(300, 600, 10, 60, 100);
-    
+    ofCone(300, 600, zPos, coneRadius, coneHeight);
+     
+  
     
     //triangle
     ofFill();
@@ -79,6 +116,12 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
+    xPos = ofRandom( ofGetWindowWidth() - 10);
+    yPos = ofRandom( ofGetWindowHeight() - 10);
+    zPos = 0;
+    coneRadius = 0;
+    coneHeight = 0;
+
 
 }
 
