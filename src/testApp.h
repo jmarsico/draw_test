@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ball.h"
+#include "ofBall.h"
 
 class testApp : public ofBaseApp{
 	public:
@@ -26,4 +27,7 @@ class testApp : public ofBaseApp{
     int z;
     
     Ball theBall;
+    
+    ofBall myBall;
+    
 };

@@ -14,38 +14,20 @@ void testApp::setup(){
     //set framerate
     ofSetFrameRate(30);
     
-    //initial position of the ball
-    xPos = ofGetWindowWidth() * 0.5;
-    yPos = ofGetWindowHeight() * 0.5;
+
 
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    
-    xPos += ( mouseX - yPos )*0.1;
-    yPos += ( mouseY - yPos )*0.1;
-    
-    if( xPos > ofGetWindowWidth()){
-        xPos = ofGetWindowWidth();
-    }
-    
-    if( xPos < 0 ){
-        xPos = 0;
-    }
-    
-    if( yPos > ofGetWindowHeight()){
-        yPos = ofGetWindowHeight();
-    }
-    
-    if( yPos < 0 ){
-        yPos = 0;
-    }
-    
+    theBall.x += (mouseX - theBall.x)*0.1;
+    theBall.y += (mouseY - theBall.y)*0.1;
  
     zPos++;
     coneRadius++;
     coneHeight++;
+    
+    myBall.update();
    
 
 }
@@ -55,9 +37,7 @@ void testApp::draw(){
     
     //center circle
     ofBackgroundGradient(ofColor::grey,ofColor(30,10,10), OF_GRADIENT_CIRCULAR);
-    ofSetColor(0, 0, 255);
-    ofFill();
-    ofCircle(xPos, yPos, 30);
+    theBall.draw();
     
     //curve
     ofNoFill();
@@ -66,7 +46,6 @@ void testApp::draw(){
    
 
     //outlined cone
-
     
     
     ofFill();
@@ -87,6 +66,8 @@ void testApp::draw(){
     ofNoFill();
     ofSetColor(ofColor::ghostWhite);
     ofBox(ofGetWindowWidth()*0.66,ofGetWindowHeight()*0.66,-10,40);
+    
+    myBall.draw();
     
     
     
@@ -116,11 +97,12 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-    xPos = ofRandom( ofGetWindowWidth() - 10);
-    yPos = ofRandom( ofGetWindowHeight() - 10);
+
     zPos = 0;
     coneRadius = 0;
     coneHeight = 0;
+    
+    new Ball();
 
 
 }
