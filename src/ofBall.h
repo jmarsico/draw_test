@@ -21,7 +21,7 @@ public:
     
     
     //constructor
-    ofBall();
+    ofBall(float _x, float _y, int _dim);
 
     //variables
     float x;

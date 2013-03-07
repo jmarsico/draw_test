@@ -14,6 +14,19 @@ void testApp::setup(){
     //set framerate
     ofSetFrameRate(30);
     
+    nBalls = 5; //number of balls to create
+
+    myBall = new ofBall*[nBalls];
+    
+    for (int i = 0; i < nBalls; i++) {
+        float x = 20+(100*i);
+        float y = 20+(100*i);
+        int dim = 10+(10*i);
+        
+        myBall[i] = new ofBall(x,y,dim);
+    }
+    
+    
 
 
 }
@@ -27,8 +40,11 @@ void testApp::update(){
     coneRadius++;
     coneHeight++;
     
-    myBall.update();
-   
+    for (int i = 0; i < nBalls; i++) {
+        myBall[i]->update();
+    }
+    
+
 
 }
 
@@ -67,10 +83,11 @@ void testApp::draw(){
     ofSetColor(ofColor::ghostWhite);
     ofBox(ofGetWindowWidth()*0.66,ofGetWindowHeight()*0.66,-10,40);
     
-    myBall.draw();
-    
-    
-    
+    for (int i = 0; i < nBalls; i++) {
+        myBall[i]->draw();
+    }
+  
+ 
     
 
 }
@@ -102,7 +119,6 @@ void testApp::mousePressed(int x, int y, int button){
     coneRadius = 0;
     coneHeight = 0;
     
-    new Ball();
 
 
 }

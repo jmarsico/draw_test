@@ -4,6 +4,8 @@
 #include "ball.h"
 #include "ofBall.h"
 
+#define NBALLS 30
+
 class testApp : public ofBaseApp{
 	public:
 		void setup();
@@ -28,6 +30,8 @@ class testApp : public ofBaseApp{
     
     Ball theBall;
     
-    ofBall myBall;
+    ofBall** myBall;
+    int nBalls;
+    
     
 };

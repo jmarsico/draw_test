@@ -9,15 +9,17 @@
 #include "ofBall.h"
 
 
-ofBall::ofBall()
+ofBall::ofBall(float _x, float _y, int _dim)
 {
-    x = ofRandom(0, ofGetWidth());
-    y = ofRandom(0, ofGetHeight());
+
+    x = _x;
+    y = _y;
+    dim = _dim;
     
     speedX = ofRandom(-1, 1);
     speedY = ofRandom(-1, 1);
     
-    dim = 20;
+   
     
 }
 
@@ -45,6 +47,6 @@ void ofBall::update(){
 }
 
 void ofBall::draw(){
-    ofSetColor(20, 20, 20);
+   
     ofCircle(x, y, dim);
 }
